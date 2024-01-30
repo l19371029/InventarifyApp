@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link href="{% static 'css/inventaryStyle.css' %}" rel="stylesheet" >
+{% endblock styles %} 
+
+{% block contenido %}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="row align-items-center container-fluid card-body"
+        style="min-height: 60px; overflow-y: scroll; max-height: 400px;">
+        <div class="col-md-3 container-fluid-2">
+            <input type="number" class="form-control dimension" placeholder="No." id="numero" name="numero" value="{{ form.numero.value }}" min="1" oninput="validarNumero(this)">
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <select class="form-control dimension" id="nombre_activo" name="nombre_activo">
+                <option value="" selected disabled>Nombre del activo</option>
+                <option value="Acceso" {% if form.nombre_activo.value == "Acceso" %}selected{% endif %}>Acceso</option>
+                <option value="Acuerdos de confidencialidad" {% if form.nombre_activo.value == "Acuerdos de confidencialidad" %}selected{% endif %}>Acuerdos de confidencialidad</option>
+                <option value="Aplicaciones y software" {% if form.nombre_activo.value == "Aplicaciones y software" %}selected{% endif %}>Aplicaciones y software</option>
+                <option value="Base de datos" {% if form.nombre_activo.value == "Base de datos" %}selected{% endif %}>Base de datos</option>
+                <option value="Celulares" {% if form.nombre_activo.value == "Celulares" %}selected{% endif %}>Celulares </option>
+                <option value="Contraseñas" {% if form.nombre_activo.value == "Contraseñas" %}selected{% endif %}>Contraseñas</option>
+                <option value="Contratos" {% if form.nombre_activo.value == "Contratos" %}selected{% endif %}>Contratos</option>
+                <option value="Cuentas" {% if form.nombre_activo.value == "Cuentas" %}selected{% endif %}>Cuentas</option>
+                <option value="Datos de proveedores" {% if form.nombre_activo.value == "Datos de proveedores" %}selected{% endif %}>Datos de proveedores</option>
+                <option value="Datos del personal" {% if form.nombre_activo.value == "Datos del personal" %}selected{% endif %}>Datos del personal</option>
+                <option value="Directrices" {% if form.nombre_activo.value == "Directrices" %}selected{% endif %}>Directrices</option>
+                <option value="Documentos2" {% if form.nombre_activo.value == "Documentos" %}selected{% endif %}>Documentos</option>
+                <option value="Evaluación del proveedor" {% if form.nombre_activo.value == "Evaluacion del proveedor" %}selected{% endif %}>Evaluación del proveedor</option>
+                <option value="Expedientes del personal" {% if form.nombre_activo.value == "Expedientes del personal" %}selected{% endif %}>Expedientes del personal</option>
+                <option value="Facturas" {% if form.nombre_activo.value == "Facturas" %}selected{% endif %}>Facturas</option>
+                <option value="Hardware" {% if form.nombre_activo.value == "Hardware" %}selected{% endif %}>Hardware</option>
+                <option value="Intranet" {% if form.nombre_activo.value == "Intranet" %}selected{% endif %}>Intranet</option>
+                <option value="Inventarios" {% if form.nombre_activo.value == "inventarios" %}selected{% endif %}>Inventarios</option>
+                <option value="Activo19" {% if form.nombre_activo.value == "Laptop" %}selected{% endif %}>Laptop</option>
+                <option value="Pedidos" {% if form.nombre_activo.value == "Pedidos" %}selected{% endif %}>Pedidos</option>
+                <option value="Procedimiento" {% if form.nombre_activo.value == "Procedimiento" %}selected{% endif %}>Procedimiento</option>
+                <option value="Protocolo" {% if form.nombre_activo.value == "Protocolo" %}selected{% endif %}>Protocolo</option>
+                <option value="Registros" {% if form.nombre_activo.value == "Registros" %}selected{% endif %}>Registros</option>
+                <option value="Registros de formación" {% if form.nombre_activo.value == "Registros de formacion" %}selected{% endif %}>Registros de formación</option>
+                <option value="Servidores" {% if form.nombre_activo.value == "Servidores" %}selected{% endif %}>Servidores</option>
+                <option value="Software" {% if form.nombre_activo.value == "Software" %}selected{% endif %}>Software</option>
+                <option value="Token" {% if form.nombre_activo.value == "Token" %}selected{% endif %}>Token</option>
+                <option value="NAS" {% if form.nombre_activo.value == "NAS" %}selected{% endif %}>NAS</option>
+                <option value="Carpetas" {% if form.nombre_activo.value == "Carpetas" %}selected{% endif %}>Carpetas</option>
+                <option value="Carpetas compartidas" {% if form.nombre_activo.value == "Carpetas compartidas" %}selected{% endif %}>Carpetas compartidas</option>
+                <option value="Otro" {% if form.nombre_activo.value == "Otro" %}selected{% endif %}>Otro</option>
+            </select>
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <input type="text" class="form-control dimension" placeholder="Descripción del activo" id="descripcion_activo" name="descripcion_activo" value="{{ form.descripcion_activo.value }}">
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <select class="form-control dimension" id="area" name="area">
+                <option value="" selected disabled>Departamentos/Áreas</option>
+                <option value="RH - Recursos Humanos" {% if form.area.value == "RH - Recursos Humanos" %}selected{% endif %}>RH - Recursos Humanos</option>
+                <option value="EHS - Medio Ambiente, Salud y Seguridad" {% if form.area.value == "EHS - Medio Ambiente, Salud y Seguridad" %}selected{% endif %}>EHS - Medio Ambiente, Salud y Seguridad</option>
+                <option value="Calidad" {% if form.area.value == "Calidad" %}selected{% endif %}>Calidad</option>
+                <option value="Compras" {% if form.area.value == "Compras" %}selected{% endif %}>Compras</option>
+                <option value="Ventas" {% if form.area.value == "Ventas" %}selected{% endif %}>Ventas</option>
+                <option value="IT Manager" {% if form.area.value == "IT Manager" %}selected{% endif %}>IT Manager</option>
+                <option value="Dirección" {% if form.area.value == "Dirección" %}selected{% endif %}>Dirección</option>
+                <option value="Contabilidad" {% if form.area.value == "Contabilidad" %}selected{% endif %}>Contabilidad</option>
+                <option value="Producción" {% if form.area.value == "Producción" %}selected{% endif %}>Producción</option>
+                <option value="Finanzas" {% if form.area.value == "Finanzas" %}selected{% endif %}>Finanzas</option>
+                <option value="Mantenimiento" {% if form.area.value == "Mantenimiento" %}selected{% endif %}>Mantenimiento</option>
+                <option value="Administración" {% if form.area.value == "Administración" %}selected{% endif %}>Administración</option>
+                <option value="Control interno" {% if form.area.value == "Control interno" %}selected{% endif %}>Control interno</option>
+                <option value="Ensamble" {% if form.area.value == "Ensamble" %}selected{% endif %}>Ensamble</option>
+                <option value="Ingeniería" {% if form.area.value == "Ingeniería" %}selected{% endif %}>Ingeniería</option>
+                <option value="Legal" {% if form.area.value == "Legal" %}selected{% endif %}>Legal</option>
+                <option value="Otros" {% if form.area.value == "Otros" %}selected{% endif %}>Otros</option>
+            </select>
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <input type="text" class="form-control dimension" placeholder="Responsable/Propietario" id="responsable" name="responsable" value="{{ form.responsable.value }}">
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <select class="form-control dimension" id="ubicacion" name="ubicacion">
+                <option value="" selected disabled>Ubicación</option>
+                <option value="Físico" {% if form.ubicacion.value == "Físico" %}selected{% endif %}>Físico</option>
+                <option value="Lógico" {% if form.ubicacion.value == "Lógico" %}selected{% endif %}>Lógico</option>
+            </select>
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <input type="text" class="form-control dimension" placeholder="Tipo de activo" id="tipo_activo" name="tipo_activo" value="{{ form.tipo_activo.value }}">
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <input type="number" class="form-control dimension" placeholder="C" id="c" name="c" min="1" oninput="updateCriticidad()" value="{{ form.c.value }}">
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <input type="number" class="form-control dimension" placeholder="I" id="i" name="i" min="1" oninput="updateCriticidad()" value="{{ form.i.value }}">
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <input type="number" class="form-control dimension" placeholder="D" id="d" name="d" min="1" oninput="updateCriticidad()" value="{{ form.d.value }}">
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <input type="number" class="form-control dimension" placeholder="Criticidad (Valor)" name="valor" value="{{ form.valor.value }}" id="criticidad" readonly>
+        </div>
+        <div class="col-md-3 container-fluid-2">
+            <input type="text" class="form-control dimension" placeholder="Nivel de Clasificación" name="clasificacion" value="{{ form.clasificacion.value }}" id="clasificacion" readonly>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-add" id="agregarBtn">Guardar</button>
+</form>
+{% block scripts %}
+    <script src="{% static 'js/inventari-2.js' %}"></script>
+{% endblock scripts %}
+
+{% endblock contenido %}

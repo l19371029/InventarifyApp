@@ -1,0 +1,125 @@
+#agregarBtn {
+    transition: background-color 0.3s ease; 
+}
+
+#btn-documents{
+    margin-left: 820px;
+    margin-bottom: 10px;
+    color: #fff; 
+    width: 150px; 
+    height: 40px; 
+    background-color: #00B0F0; 
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 2px;
+}
+
+.title{
+    margin-top: 150px;
+}
+
+/* card */
+.card {
+    position: relative;
+    width: 970px;
+    height: 350px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    transition: all ease-in-out 0.3s;
+    overflow: hidden;
+    margin-left: 40px;
+  }
+
+.card-2 {
+    position: relative;
+    width: 970px;
+    height: 250px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    transition: all ease-in-out 0.3s;
+    overflow: hidden;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+/* Dimension */
+.dimension{
+    width: 250px;
+    height: 50px;
+}
+
+.container-fluid-2 {
+    margin-right: 50px; 
+}
+
+.container-fluid-2:last-child {
+    margin-right: 20px;
+}
+
+/* Align items of form */
+.align-items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* btn add */
+.btn-align{
+  margin-top: 12px;
+  margin-right: 800px;
+}
+
+/* Upload image */
+.custum-file-upload {
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  gap: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #e8e8e8;
+  background-color: #212121;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 48px 35px -48px #e8e8e8;
+}
+
+.custum-file-upload .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+  height: 80px;
+  fill: #e8e8e8;
+}
+
+.custum-file-upload .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .text span {
+  font-weight: 400;
+  color: #e8e8e8;
+}
+
+.custum-file-upload input {
+  display: none;
+}

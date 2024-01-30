@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block contenido %}
+    <h4>Por favor, elija los apartados pertinentes en caso de ser necesarios; en caso contrario, 
+        proceda a hacer clic en el botón denominado "Siguiente".</h4>
+    <form method="post">
+		<div class="form-group">
+            <div class="columns">
+                <ul class="list-items">
+                    <li class="item">
+                        <input type="checkbox" id="lugar-planta-checkbox">
+                        <label for="lugar-planta-checkbox">
+                            <div class="tooltip-container">
+                                <span class="tooltip-text">Descripcion Breve del Nombre</span>
+                                <span class="item-text">Lugar/Planta</span>
+                            </div>
+                        </label>
+                    </li>
+                    <li class="item">
+                        <input type="checkbox" id="modelo-activo-checkbox">
+                        <label for="modelo-activo-checkbox">
+                            <div class="tooltip-container">
+                                <span class="tooltip-text">Descripcion Breve del Nombre</span>
+                                <span class="item-text">Modelo del activo</span>
+                            </div>
+                        </label>
+                    </li>
+                    <li class="item">
+                        <input type="checkbox" id="sistema-software-checkbox">
+                        <label for="sistema-software-checkbox">
+                            <div class="tooltip-container">
+                                <span class="tooltip-text">Descripcion Breve del Nombre</span>
+                                <span class="item-text">Sistema/Software</span>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+		</div>
+        <a class="btn-inventari" href="{% url 'clasificacion' %}" id="miBoton">siguiente</a>
+	</form>
+    
+{% endblock contenido %}

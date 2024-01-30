@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block contenido %}
+
+  <head>
+      <link href="{% static 'css/user.css' %}" rel="stylesheet">
+  </head>
+    <h2>Usuarios Filtrados</h2>
+    <nav>
+      <ul>
+        <li>
+          <a href="{% url 'UserAdmin' %}" class="btn-opction">Departamento 1</a>
+          <span></span><span></span><span></span><span></span>
+        </li>
+        <li>
+          <a href="" class="btn-opction">Departamento 2</a>
+          <span></span><span></span><span></span><span></span>
+        </li>
+        <li>
+          <a href="" class="btn-opction">Departamento 3</a>
+          <span></span><span></span><span></span><span></span>
+        </li>
+        <li>
+          <a href="" class="btn-opction">Departamento 4</a>
+          <span></span><span></span><span></span><span></span>
+        </li>
+      </ul>
+    </nav>
+{% endblock %}

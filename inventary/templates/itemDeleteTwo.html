@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h2>¿Seguro de eliminar el activo?</h2>
+        <button type="submit" class="btn btn-danger">Si, eliminar</button>
+        <a href="{% url 'inventariTwo' %}" class="btn btn-success">No, Cancelar</a>
+    </form>
+{% endblock %}

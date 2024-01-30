@@ -1,0 +1,298 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block styles %}
+        <link href="{% static 'css/clasification-style.css' %}" rel="stylesheet" >
+{% endblock styles %}
+
+{% block contenido %}
+    
+    <h1>Elije una valorarización</h1>
+    <a href="{% url 'inventariOne' %}">
+        <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Opción 1</span>
+        </button>
+    </a>
+    <h5 class="h5-clasification">La valorización de la confidencialidad, integridad y disponibilidad será de un valor del 1 al 3</h5>
+    <div class="div-acordeon">
+        <div class="section-acordeon">
+            <div class="topic-acordeon" onclick="toggleSeccion(this)">CONFIDENCIALIDAD</div>
+            <div class="content">
+                <table border="1" class="table-option">
+                    <tr>
+                        <th class="th-option">Valor del Activo</th>
+                        <th class="th-option">Descripción</th>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>3<br>(Alto)</p>
+                        </td>
+                        <td class="td-option">La información asociada al activo es restringida y solo personal de un proyecto 
+                            específico puede acceder a ella, pues su divulgación afectaría gravemente a la organización,
+                            solo accedida por el personal de alto rango
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>2<br>(Medio)</p>
+                        </td>
+                        <td class="td-option">La información asociada al activo es confidencial y solo personal de algunas áreas
+                            internas pueden acceder a ella, pues su divulgación afectaría considerablemente a la 
+                            organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>1<br>(Bajo)</p>
+                        </td>
+                        <td class="td-option">La información asociada al activo es de uso interno y solo personal puede acceder 
+                            a ella, pues su divulgación afectaría parcialmente a la organización.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section-acordeon">
+            <div class="topic-acordeon" onclick="toggleSeccion(this)">INTEGRIDAD</div>
+            <div class="content">
+                <table border="1" class="table-option">
+                    <tr>
+                        <th class="th-option">Valor del Activo</th>
+                        <th class="th-option">Descripción</th>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>3<br>(Alto)</p>
+                        </td>
+                        <td class="td-option">El activo puede tolerar un máximo de pérdida o alteración de sus componentes en un 0-15%, 
+                            pues la vulneración de su integridad afectaría gravemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>2<br>(Medio)</p>
+                        </td>
+                        <td class="td-option">El activo puede tolerar un máximo de pérdida o alteración de sus componentes en un 50%, 
+                            pues la vulneración de su integridad afectaría considerablemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>1<br>(Bajo)</p>
+                        </td>
+                        <td class="td-option">El activo puede tolerar un máximo de pérdida o alteración de sus componentes en un 85%-100%, 
+                            pues la vulneración de su integridad afectaría parcialmente a la organización.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section-acordeon">
+            <div class="topic-acordeon" onclick="toggleSeccion(this)">DISPONIBILIDAD</div>
+            <div class="content">
+                <table border="1" class="table-option">
+                    <tr>
+                        <th class="th-option">Valor del Activo</th>
+                        <th class="th-option">Descripción</th>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>3<br>(Alto)</p>
+                        </td>
+                        <td class="td-option">Se considera que como máximo el activo puede estar indisponible por una hora, 
+                            pues su carencia afectaría gravemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>2<br>(Medio)</p>
+                        </td>
+                        <td class="td-option">Se considera que como máximo el activo puede estar indisponible por un día, 
+                            pues su carencia afectaría considerablemente a la organización.
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>1</br>(Bajo)</p>
+                        </td>
+                        <td class="td-option">Se considera que como máximo el activo puede estar indisponible por una semana, 
+                            pues su carencia afectaría parcialmente a la organización.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a class="btn-opcion" href="{% url 'inventariTwo' %}">
+        <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Opción 2</span>
+        </button>
+    </a>
+    <h5 class="h5-clasification">La valorización de la confidencialidad, integridad y disponibilidad será de un valor del 1 al 5</h5>
+    <div class="div-acordeon">
+        <div class="section-acordeon">
+            <div class="topic-acordeon" onclick="toggleSeccion(this)">CONFIDENCIALIDAD</div>
+            <div class="content">
+                <table border="1" class="table-option">
+                    <tr>
+                        <th class="th-option">Valor del Activo</th>
+                        <th class="th-option">Descripción</th>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>5<br>(Muy Alto)</p>
+                        </td>
+                        <td class="td-option">La información asociada al activo es solo accedida por el personal de alto 
+                            rango, pues su divulgación afectaría irreversiblemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>4<br>(Alto)</p>
+                        </td>
+                        <td class="td-option">La información asociada al activo es confidencial y solo personal de un 
+                            proyecto específico puede acceder a ella, pues su divulgación afectaría gravemente a la 
+                            organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>3<br>(Medio)</p>
+                        </td>
+                        <td class="td-option">La información asociada al activo es restringida y solo personal de algunas 
+                            áreas internas pueden acceder a ella, pues su divulgación afectaría considerablemente a la 
+                            organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>2<br>(Bajo)</p>
+                        </td>
+                        <td class="td-option">La información asociada al activo es de uso interno y solo personal de 
+                            la empresa pueda acceder a ella, pues su divulgación afectaría parcialmente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>1<br>(Muy Bajo)</p>
+                        </td>
+                        <td class="td-option">La información asociada al activo es pública y cualquiera puede acceder a 
+                            ella, pues no impacta a la organización.
+            
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section-acordeon">
+            <div class="topic-acordeon" onclick="toggleSeccion(this)">INTEGRIDAD</div>
+            <div class="content">
+                <table border="1" class="table-option">
+                    <tr>
+                        <th class="th-option">Valor del Activo</th>
+                        <th class="th-option">Descripción</th>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>5<br>(Muy Alto)</p>
+                        </td>
+                        <td class="td-option">El activo puede tolerar un máximo de pérdida o alteración de sus componentes 
+                            en un 0%, pues la vulneración de su integridad afectaría irreversiblemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>4<br>(Alto)</p>
+                        </td>
+                        <td class="td-option">El activo puede tolerar un máximo de pérdida o alteración de sus componentes 
+                            en un 15%, pues la vulneración de su integridad afectaría gravemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>3<br>(Medio)</p>
+                        </td>
+                        <td class="td-option">El activo puede tolerar un máximo de pérdida o alteración de sus componentes 
+                            en un 50%, pues la vulneración de su integridad afectaría considerablemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>2<br>(Bajo)</p>
+                        </td>
+                        <td class="td-option">El activo puede tolerar un máximo de pérdida o alteración de sus componentes
+                            en un 85%, pues la vulneración de su integridad afectaría parcialmente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>1<br>(Muy Bajo)</p>
+                        </td>
+                        <td class="td-option">El activo puede tolerar un máximo de pérdida o alteración de sus componentes 
+                            en un 100%, pues la vulneración de su integridad no impacta a la organización.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section-acordeon">
+            <div class="topic-acordeon" onclick="toggleSeccion(this)">DISPONIBILIDAD</div>
+            <div class="content">
+                <table border="1" class="table-option">
+                    <tr>
+                        <th class="th-option">Valor del Activo</th>
+                        <th class="th-option">Descripción</th>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>5<br>(Muy Alto)</p>
+                        </td>
+                        <td class="td-option">Se requiere que el activo nunca se encuentre indisponible, 
+                            pues su carencia afectaría irreversiblemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>4<br>(Alto)</p>
+                        </td>
+                        <td class="td-option">Se considera que como máximo el activo puede estar indisponible por una hora,
+                            pues su carencia afectaría gravemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>3<br>(Medio)</p>
+                        </td>
+                        <td class="td-option">Se considera que como máximo el activo puede estar indisponible por un día, 
+                            pues su carencia afectaría considerablemente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>2<br>(Bajo)</p>
+                        </td>
+                        <td class="td-option">Se considera que como máximo el activo puede estar indisponible por una 
+                            semana, pues su carencia afectaría parcialmente a la organización.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-option-2">
+                            <p>1<br>(Muy Bajo)</p>
+                        </td>
+                        <td class="td-option">Se considera que como máximo el activo puede estar indisponible por tiempo 
+                            indefinido, pues su carencia no impacta a la organización.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% block scripts %}
+        <script src="{% static 'js/app.js' %}"></script>
+    {% endblock scripts %}
+{% endblock contenido %}

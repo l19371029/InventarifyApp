@@ -1,0 +1,152 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Inventarify - App</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template's-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" >
+    <link href="{% static 'css/styles-1.css' %}" rel="stylesheet" >
+    {% block styles %}
+        
+    {% endblock styles %} 
+</head>
+
+<body id="page-top" data-bs-theme="light">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-dark ul-panel">
+            <label>
+                <input type="checkbox" class="theme-checkbox" id="themeCheckbox">
+            </label>
+            <div class="perfil-image">
+                <picture>
+                    <img src="{% static 'img/vector-usuario.png' %}">
+                </picture> 
+            </div>
+            
+            <li class="username">
+                <span class="user-name">{{ user.username }}</span>
+            </li>
+            <hr class="sidebar-divider">
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item" id="nav-item-indicator">
+                <a class="nav-link active" href="{% url 'home' %}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Nav Item - Pages Menu -->
+            <li class="nav-item" id="nav-item-indicator">
+                <a class="nav-link" href="{% url 'inventariSection' %}">
+                    <i class=""></i>
+                    <span>Inventario</span>
+                </a>
+            </li>
+            <!-- Nav Item - Page Menu -->
+            <li class="nav-item" id="nav-item-indicator">
+                <a class="nav-link" href="#">
+                    <i class=""></i>
+                    <span>Historial</span>
+                </a>
+            </li> 
+            <!-- Nav Item - Pages Menu -->
+            <li class="nav-item" id="nav-item-indicator">
+                {% if user.is_staff %}
+                    <a class="nav-link" href="{% url 'usersList' %}">
+                        <i class=""></i>
+                        <span>Usuario</span>
+                    </a>
+                {% endif %}
+            </li>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item" id="nav-item-indicator">
+                <a class="nav-link" href="{% url 'support' %}">
+                    <i class=""></i>
+                    <span>Soporte</span></a>
+                                        
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link" style="border: none; background: none; cursor: pointer;">
+                        <span>Cerrar Sesión</span>
+                    </button>
+                </form>
+            </li>
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content" class="div mode-night">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <picture>
+                        <img src="{% static 'img/DAI-logo.png' %}" alt="DAI-logo" class="img-content">
+                    </picture>
+                    {% block contenido %}
+                    <!-- Message Welcome Modal -->
+                        <input type="checkbox" id="btn-modal">
+                        <div class="container-modal" id="welcomeModal">
+                            <div class="content-modal"> 
+                                <h2>Bienvenido</h2>
+                                <p>Si no sabes cómo empezar, no te preocupes. Haz clic en el botón "Soporte",
+                                    ahí encontrarás más información al respecto.
+                                </p>
+                                <div class="btn-cerrar">
+                                    <label for="btn-modal" onclick="closeModal()">Cerrar</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Body content -->
+                        <a class="button1" href="{% url 'clasificacion' %}">
+                            <span>Crear un nuevo inventario de activos</span>
+                        </a>
+                    {% endblock %} 
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+    {% block scripts %}
+        <script src="{% static 'js/storage.js' %}"></script>
+    {% endblock scripts %}
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    <!-- js with Bootstrap -->
+    <script src="{% static 'js/scriptSelect.js' %}"><script>
+    <script src="{% static 'js/mode.js' %}"><script>
+    
+</body>
+
+</html>

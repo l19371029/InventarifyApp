@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link href="{% static 'css/inv-style.css' %}" rel="stylesheet" > 
+{% endblock styles %}
+
+{% block contenido %}
+    <h2 class="title">Complete el inventario de activos de información</h2>
+    <section class="container-fluid">
+    <button id="btn-documents" class="btn btn-primary btn-add-documents" data-toggle="modal" data-target="#myModal">Agregar Datos<br>Documentos</button>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Agregar Datos Documentos</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'inventariOne' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ item_business_form.codigo.id_for_label }}">Código:</label>
+                            <input type="text" class="form-control" id="codigo" name="codigo">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ item_business_form.version.id_for_label }}">Versión:</label>
+                            <input type="text" class="form-control" id="version" name="version">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ item_business_form.fecha_elaboracion.id_for_label }}">Fecha de Elaboración:</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha_elaboracion">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ item_business_form.fecha_revision.id_for_label }}">Fecha de Revisión:</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha_revision">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ item_business_form.imagen.id_for_label }}">Subir Imagen:</label>
+                            <input type="file" class="form-control-file" id="imagen" name="imagen">
+                        </div> 
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="card">
+        <form action="{% url 'inventariOne' %}" method="post">
+            {% csrf_token %}
+            <div class="row container-fluid card-body align-items">
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.numero.id_for_label }}"></label>
+                            <input type="number" class="form-control dimension" placeholder="No." id="numero" name="numero"  min="1" oninput="validarNumero(this)">
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.nombre_activo.id_for_label }}"></label>
+                            <select class="form-control dimension" id="nombre_activo" name="nombre_activo">
+                                <option value="" selected disabled>Nombre del activo</option>
+                                <option value="Acceso">Acceso</option>
+                                <option value="Acuerdos de confidencialidad">Acuerdos de confidencialidad</option>
+                                <option value="Aplicaciones y software">Aplicaciones y software</option>
+                                <option value="Base de datos">Base de datos</option>
+                                <option value="Celulares">Celulares </option>
+                                <option value="Contraseñas">Contraseñas</option>
+                                <option value="Contratos">Contratos</option>
+                                <option value="Cuentas">Cuentas</option>
+                                <option value="Datos de proveedores">Datos de proveedores</option>
+                                <option value="Datos del personal">Datos del personal</option>
+                                <option value="Directrices">Directrices</option>
+                                <option value="Documentos2">Documentos</option>
+                                <option value="Evaluación del proveedor">Evaluación del proveedor</option>
+                                <option value="Expedientes del personal">Expedientes del personal</option>
+                                <option value="Facturas">Facturas</option>
+                                <option value="Hardware">Hardware</option>
+                                <option value="Intranet">Intranet</option>
+                                <option value="Inventarios">Inventarios</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Pedidos">Pedidos</option>
+                                <option value="Procedimiento">Procedimiento</option>
+                                <option value="Protocolo">Protocolo</option>
+                                <option value="Registros">Registros</option>
+                                <option value="Registros de formación">Registros de formación</option>
+                                <option value="Servidores">Servidores</option>
+                                <option value="Software">Software</option>
+                                <option value="Token">Token</option>
+                                <option value="NAS">NAS</option>
+                                <option value="Carpetas">Carpetas</option>
+                                <option value="Carpetas compartidas">Carpetas compartidas</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.descripcion_activo.id_for_label }}"></label>
+                            <input type="text" class="form-control dimension" placeholder="Descripción del activo" id="descripcion_activo" name="descripcion_activo">
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.area.id_for_label }}"></label>
+                            <select class="form-control dimension" id="area" name="area">
+                                <option value="" selected disabled>Departamentos/Áreas</option>
+                                <option value="RH - Recursos Humanos">RH - Recursos Humanos</option>
+                                <option value="EHS - Medio Ambiente, Salud y Seguridad">EHS - Medio Ambiente, Salud y Seguridad</option>
+                                <option value="Calidad">Calidad</option>
+                                <option value="Compras">Compras</option>
+                                <option value="Ventas">Ventas</option>
+                                <option value="IT Manager">IT Manager</option>
+                                <option value="Dirección">Dirección</option>
+                                <option value="Contabilidad">Contabilidad</option>
+                                <option value="Producción">Producción</option>
+                                <option value="Finanzas">Finanzas</option>
+                                <option value="Mantenimiento">Mantenimiento</option>
+                                <option value="Administración">Administración</option>
+                                <option value="Control interno">Control interno</option>
+                                <option value="Ensamble">Ensamble</option>
+                                <option value="Ingeniería<">Ingeniería</option>
+                                <option value="Legal">Legal</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.responsable.id_for_label }}"></label>
+                            <input type="text" class="form-control dimension" placeholder="Responsable/Propietario" id="responsable" name="responsable">
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.ubicacion.id_for_label }}"></label>
+                            <select class="form-control dimension" id="ubicacion" name="ubicacion">
+                                <option value="" selected disabled>Ubicación</option>
+                                <option value="Físico">Físico</option>
+                                <option value="Lógico">Lógico</option>
+                            </select>
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.tipo_activo.id_for_label }}"></label>
+                            <input type="text" class="form-control dimension" placeholder="Tipo de activo" id="tipo_activo" name="tipo_activo">
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.c.id_for_label }}"></label>
+                            <input type="number" class="form-control dimension" placeholder="C" id="c" name="c" min="1" oninput="updateCriticidad()">
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.i.id_for_label }}"></label>
+                            <input type="number" class="form-control dimension" placeholder="I" id="i" name="i" min="1" oninput="updateCriticidad()">
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.d.id_for_label }}"></label>
+                            <input type="number" class="form-control dimension" placeholder="D" id="d" name="d" min="1" oninput="updateCriticidad()">
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.valor.id_for_label }}"></label>
+                            <input type="number" class="form-control dimension" placeholder="Criticidad (Valor)" name="valor" id="criticidad" readonly>
+                </div>
+                <div class="col-md-3 container-fluid-2">
+                            <label for="{{ item_form.clasificacion.id_for_label }}"></label>
+                            <input type="text" class="form-control dimension" placeholder="Nivel de Clasificación" name="clasificacion"  id="clasificacion" readonly>
+                </div>
+                <button type="submit" class="btn btn-success btn-add btn-align" id="btnAdd">Agregar</button>
+            </div>
+        </form>
+    </div>
+    <section class="container-fluid">
+        <div class="card-2">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nombre del<br>activo</th>
+                            <th>Descripción del<br>activo</th>
+                            <th>Departamento/<br>Área</th>
+                            <th>Responsable/<br>Propietario</th>
+                            <th>Ubicación</th>
+                            <th>Tipo de<br>activo</th>
+                            <th>C</th>
+                            <th>I</th>
+                            <th>D</th>
+                            <th>Criticidad<br>(Valor)</th>
+                            <th>Nivel de<br>Clasificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td scope="editable"> {{ item.numero }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.nombre_activo }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.descripcion_activo }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.area }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.responsable }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.ubicacion }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.tipo_activo }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.c }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.i }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.d }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.valor }} </td>
+                            <td class="editable" contenteditable="true"> {{ item.clasificacion }} </td>
+                            <td> 
+                                <a class="btn btn-danger" href="{% url 'itemDelete' item.id %}" role="button">Eliminar</a>
+                                <a class="btn btn-secondary" href="{% url 'itemEdit' item.id %}">Editar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>    
+            </div>
+            <a href="{% url 'inventariSection' %}">
+                <button class="btn-inventari">Guardar</button>
+            </a>
+        </div> 
+    </section>
+    {% block scripts %}
+        <script src="{% static 'js/invetari.js' %}"></script>
+    {% endblock scripts %}
+{% endblock contenido %}

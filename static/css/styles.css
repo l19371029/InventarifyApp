@@ -1,0 +1,53 @@
+.navbar-nav.sidebar.sidebar-dark.ul-panel {
+    background-color: #002060;  
+}
+.username {
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+            
+.button-modal{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;  
+    cursor: pointer;
+    border-radius: 5px; 
+    padding: 40px;
+    background-color: #fff;
+}
+    
+.button-modal label{
+    padding: 20px 5px;
+    background-color: #333F50;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.button-modal label:hover{
+    background-color: #333F50;
+}
+#btn-modal{
+    display: none;
+    height: 100px;
+    width: 200px;
+}
+
+.container-modal{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(144, 148, 150, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+                   

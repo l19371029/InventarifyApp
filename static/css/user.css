@@ -1,0 +1,77 @@
+.btn-opction{
+    margin-top: 20px;
+    transition: border 0.3s ease;
+    color: #777;
+    cursor: pointer;
+}
+   
+.btn-opction:hover {
+    border: 2px dotted transparent;
+    color: #000000; 
+    text-decoration: none; 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Cambiado para que las filas se extiendan */
+}
+
+nav ul li {
+    --c: #808080;
+    color: var(--c);
+    font-size: 20px; /* Aumentado el tamaño del texto */
+    border: 0.3em solid var(--c);
+    border-radius: 0.5em;
+    width: 100%; /* Cambiado el ancho para que ocupe todo el contenedor */
+    height: 4em; /* Aumentado el tamaño de la fila */
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 4em; /* Ajustado la altura de la línea */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 1em;
+}
+
+nav ul li span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+nav ul li:hover {
+    color: black;
+}
+
+nav ul li:hover span {
+    transform: translateY(0) scale(4);
+}
+
+nav ul li span:nth-child(1) {
+    --n: 1;
+}
+
+nav ul li span:nth-child(2) {
+    --n: 2;
+}
+
+nav ul li span:nth-child(3) {
+    --n: 3;
+}
+
+nav ul li span:nth-child(4) {
+    --n: 4;
+}

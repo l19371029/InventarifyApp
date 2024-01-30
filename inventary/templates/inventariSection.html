@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+
+{% block contenido %}
+    <h1>Genera el PDF</h1>
+    <section class="container-fluid">
+        <div class="card-body" style="overflow-y: scroll; max-height: 400px;">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nombre del<br>activo</th>
+                            <th>Descripción del<br>activo</th>
+                            <th>Departamento/<br>Área</th>
+                            <th>Responsable/<br>Propietario</th>
+                            <th>Ubicación</th>
+                            <th>Tipo de<br>activo</th>
+                            <th>C</th>
+                            <th>I</th>
+                            <th>D</th>
+                            <th>Criticidad<br>(Valor)</th>
+                            <th>Nivel de<br>Clasificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td> {{ item.numero }} </td>
+                            <td> {{ item.nombre_activo }} </td>
+                            <td> {{ item.descripcion_activo }} </td>
+                            <td> {{ item.area }} </td>
+                            <td> {{ item.responsable }} </td>
+                            <td> {{ item.ubicacion }} </td>
+                            <td> {{ item.tipo_activo }} </td>
+                            <td> {{ item.c }} </td>
+                            <td> {{ item.i }} </td>
+                            <td> {{ item.d }} </td>
+                            <td> {{ item.valor }} </td>
+                            <td> {{ item.clasificacion }} </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+        <a href="{% url 'generate_pdf' %}" target="_blank"> 
+            <button class="btn-inventari">Generar PDF</button>
+        </a> 
+    </section> 
+{% endblock contenido %}
