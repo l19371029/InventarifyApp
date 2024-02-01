@@ -62,7 +62,7 @@ def generate_pdf(request):
     #Second Table
     data_table1 = [
         ["No.", "Nombre del\nactivo", "Descripción del\nactivo", "Departamento/\nÁrea", "Responsable/\nPropietario",
-         "Tipo de\nubicación", "Tipo de\nactivo", "C", "I", "D", "Criticidad\n(Valor)", "Nivel de\nclasificación"]
+         "Tipo de\nactivo", "Ubicacón", "C", "I", "D", "Criticidad\n(Valor)", "Nivel de\nclasificación"]
     ]
 
     for index, item in enumerate(items, start=1):
