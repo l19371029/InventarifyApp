@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #apps de inicializción
+    #Inicialization apps
     'generales',
     'inventary',
     'support',
     'users',
+    'catalogo',
+    'businessData',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'inventarifyApp.urls'
-#Importación de librerias OS
+
+#Library iport os
 import os 
 TEMPLATES = [
     {
@@ -145,3 +148,13 @@ LOGOUT_REDIRECT = 'login'
 
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# settings of google autethicatio
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # serve
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'cmarquez@mbqinc.com' 
+EMAIL_HOST_PASSWORD = 'MBQ#23k1$201$10'  # tu contraseña de correo

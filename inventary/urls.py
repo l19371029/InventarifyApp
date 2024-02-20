@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from inventary import views
-from inventary.views import SelectInventari, Clasificacion, InventariOne, InventariTwo, ItemDelete, InventariSection, ItemEdit, ItemDeleteTwo, ItemEditTwo
+from inventary.views import Clasificacion, InventariOne, InventariTwo, ItemDelete, InventariSection, ItemEdit, ItemDeleteTwo, ItemEditTwo, History
 
 urlpatterns = [
     path ('clasificacion/', Clasificacion.as_view(), name='clasificacion'),
@@ -13,7 +13,9 @@ urlpatterns = [
     path ('eliminar/item/<int:pk>', ItemDeleteTwo.as_view(), name='itemDeleteTwo'),
     path ('inventario/', InventariSection.as_view(), name="inventariSection"),
     path ('editar/item/<int:pk>', ItemEdit.as_view(), name="itemEdit"),
-    path ('editar/item-2/<int:pk>', ItemEditTwo.as_view(), name="itemEditTwo")
+    path ('editar/item-2/<int:pk>', ItemEditTwo.as_view(), name="itemEditTwo"),
+    path ('historal/', History.as_view(), name="history")
+
 ]
 
 if settings.DEBUG:

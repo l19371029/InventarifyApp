@@ -21,6 +21,9 @@
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" >
     <link href="{% static 'css/styles-1.css' %}" rel="stylesheet" >
+    <style>
+        
+    </style>
     {% block styles %}
         
     {% endblock styles %} 
@@ -62,7 +65,7 @@
             </li>
             <!-- Nav Item - Page Menu -->
             <li class="nav-item" id="nav-item-indicator">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'history' %}">
                     <i class=""></i>
                     <span>Historial</span>
                 </a>
@@ -74,6 +77,14 @@
                         <i class=""></i>
                         <span>Usuario</span>
                     </a>
+                    <a class="nav-link" href="{% url 'catalogo' %}">
+                        <i class=""></i>
+                        <span>Catalogo</span>
+                    </a>
+                    <a class="nav-link" href="{% url 'businessData' %}">
+                        <i class=""></i>
+                        <span>Datos Empresa</span>
+                    </a>
                 {% endif %}
             </li>
             <!-- Nav Item - Charts -->
@@ -81,7 +92,6 @@
                 <a class="nav-link" href="{% url 'support' %}">
                     <i class=""></i>
                     <span>Soporte</span></a>
-                                        
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

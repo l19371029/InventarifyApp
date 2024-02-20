@@ -65,7 +65,6 @@ class ItemBusiness(models.Model):
     version = models.CharField(max_length=255)
     fecha_elaboracion = models.DateField()
     fecha_revision = models.DateField()
-    imagen = models.ImageField(upload_to='images/', null=True, blank=True)
     
     def __str__(self):
-        return f"{self.codigo}, {self.version}, {self.fecha_elaboracion}, {self.fecha_revision}, {self.imagen}"
+        return f"{self.codigo}, {self.version}, {self.fecha_elaboracion}, {self.fecha_revision}"

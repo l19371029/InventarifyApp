@@ -1,0 +1,5 @@
+<p>Hola {{ user.username }},</p>
+<p>Gracias por registrarte en MyApp. Para establecer tu contraseña, haz clic en el siguiente enlace:</p>
+<p><a href="{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}">Establecer contraseña</a></p>
+<p>Si no has solicitado esto, ignora este correo electrónico.</p>
+<p>Atentamente,<br>Digital Assents Inventory Team</p>

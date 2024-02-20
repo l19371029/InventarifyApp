@@ -34,7 +34,7 @@ def generate_pdf(request):
     # First table
     data_table2 = [
         ["Imagen", "Inventario de Activos de Información", "Fecha de revisión", itemsBusiness.fecha_revision],
-        [itemsBusiness.imagen,"", "Fecha de elaboración", itemsBusiness.fecha_elaboracion],
+        ["", "Fecha de elaboración", itemsBusiness.fecha_elaboracion],
         ["", "", "Versión", itemsBusiness.version],
         ["", "", "Código", itemsBusiness.codigo],
     ]
@@ -174,25 +174,25 @@ class InventariTwo(LoginRequiredMixin, View):
 
         return HttpResponseRedirect(reverse_lazy('inventariTwo')) 
 
-class ItemDelete(generic.DeleteView):
+class ItemDelete(generic.DeleteView, LoginRequiredMixin):
     model = Items
     template_name = 'itemDelete.html'
     context_object_name = 'items'
     success_url = reverse_lazy('inventariOne')
 
-class ItemDeleteTwo(generic.DeleteView):
+class ItemDeleteTwo(generic.DeleteView, LoginRequiredMixin):
     model = Items
     template_name = 'itemDeleteTwo.html'
     context_object_name = 'items'
     success_url = reverse_lazy('inventariTwo')
 
-class ItemEdit(generic.UpdateView):
+class ItemEdit(generic.UpdateView, LoginRequiredMixin):
     model = Items
     template_name = 'itemCreate.html'
     form_class = ItemForm
     success_url = reverse_lazy('inventariOne')
 
-class ItemEditTwo(generic.UpdateView):
+class ItemEditTwo(generic.UpdateView, LoginRequiredMixin):
     model = Items
     template_name = 'itemCreateTwo.html'
     form_class = ItemForm
@@ -207,3 +207,6 @@ class InventariSection(LoginRequiredMixin, generic.ListView):
     queryset = Items.objects.all()
     template_name = 'inventariSection.html'
     context_object_name = 'items'
+
+class History(generic.TemplateView, LoginRequiredMixin):
+    template_name = 'history.html'

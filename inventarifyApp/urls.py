@@ -18,11 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+
 urlpatterns = [
     path ('admin/', admin.site.urls),
     path ('', include('generales.urls')),
     path ('inventario/', include('inventary.urls')),
     path ('soporte/', include('support.urls')),
     path ('usuarios/', include('users.urls')),
+    path ('catalogo/', include('catalogo.urls')),
+    path ('datos-empresa/', include('businessData.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
