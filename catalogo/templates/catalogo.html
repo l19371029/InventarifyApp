@@ -11,22 +11,18 @@
             <h5 class="card-title">Datos para parte interna de la empresa</h5>
         </div>
         <div class="card-body">
-            <form method="post">
+            <form action="{% url 'catalogue' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="revenue">Vista Para Usuarios</label>
                 </div>
                 <div class="form-group">
-                    <label for="{{ catalogue_form.nombre_activo.id_for_label }}">Nombre del activo</label>
+                    <label for="{{ form.name_active.id_for_label }}">Nombre del activo</label>
                     <input type="text" class="form-control" placeholder="Nombre del activo" id="nombre_activo" name="nombre_activo">
                 </div>
                 <div class="form-group">
-                    <label for="{{ catalogue_form.areas.id_for_label }}">Departamentos/áreas:</label>
+                    <label for="{{ form.areas.id_for_label }}">Departamentos/áreas:</label>
                     <input type="text" class="form-control" placeholder="Departamentos/áreas" id="areas" name="areas">
-                </div>
-                <div class="form-group">
-                    <label for="{{ catalogue_form.tipo_activo.id_for_label }}">Tipo de activo:</label>
-                    <input type="text" class="form-control" placeholder="Tipo de activo" id="tipo_activo" name="tipo_activo">
                 </div>
                 <button type="submit" class="btn btn-success btn-add btn-align" id="btnAdd">Guardar</button>
             </form>
@@ -40,13 +36,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for Catalogue in catalogue %}
+                    {% for catalogue in catalogues %}
                     <tr>
-                        <td class="editable" contenteditable="true"> {{ catalogue.nombre_activo }} </td>
+                        <td class="editable" contenteditable="true"> {{ catalogue.name_active }} </td>
                         <td class="editable" contenteditable="true"> {{ catalogue.areas }} </td>
-                        <td class="editable" contenteditable="true"> {{ catalogue.tipo_activo }} </td>
-                            <a class="btn btn-danger" href="{% url 'itemDelete' item.id %}" role="button">Eliminar</a>
-                            <a class="btn btn-secondary" href="{% url 'itemEdit' item.id %}">Editar</a>
+                        <td>
+                            <a class="btn btn-danger" href="{" role="button">Eliminar</a>
+                            <a class="btn btn-secondary" href="">Editar</a>
                         </td>
                     </tr>
                     {% endfor %}

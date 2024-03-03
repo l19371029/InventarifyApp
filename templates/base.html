@@ -73,11 +73,11 @@
             <!-- Nav Item - Pages Menu -->
             <li class="nav-item" id="nav-item-indicator">
                 {% if user.is_staff %}
-                    <a class="nav-link" href="{% url 'usersList' %}">
+                    <a class="nav-link" href="http://127.0.0.1:5000/admin/auth/user/">
                         <i class=""></i>
                         <span>Usuario</span>
                     </a>
-                    <a class="nav-link" href="{% url 'catalogo' %}">
+                    <a class="nav-link" href="{% url 'catalogue' %}">
                         <i class=""></i>
                         <span>Catalogo</span>
                     </a>
@@ -92,6 +92,11 @@
                 <a class="nav-link" href="{% url 'support' %}">
                     <i class=""></i>
                     <span>Soporte</span></a>
+            </li>
+            <li class="nav-item" id="nav-item-indicator">
+                <a class="nav-link" href="{% url 'RegisterPassword' %}">
+                    <i class=""></i>
+                    <span>Cambiar contraseña</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

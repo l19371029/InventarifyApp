@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block contenido %}
+<form action="{% url 'deleteData' pk=business.pk %}" method="post">
+    {% csrf_token %}
+    <h2>¿Seguro de eliminar los datos?</h2>
+    <button type="submit" class="btn btn-danger">Si, eliminar</button>
+    <a href="{% url 'businessData' %}" class="btn btn-success">No, Cancelar</a>
+</form>
+{% endblock contenido %}

@@ -7,10 +7,11 @@ from .forms import ItemForm, ItemBusinessForm
 from io import BytesIO
 from django.http import HttpResponse
 from reportlab.lib.pagesizes import letter, landscape
-from reportlab.platypus import Table, TableStyle
+from reportlab.platypus import Table, TableStyle, Image
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from django.http import HttpResponseRedirect
+from businessData.models import Business
  
 
 def generate_pdf(request):
@@ -21,7 +22,8 @@ def generate_pdf(request):
     p = canvas.Canvas(buffer, pagesize=landscape(letter))
 
     items = Items.objects.all()
-    itemsBusiness = ItemBusiness.objects.first()  
+    itemsBusiness = ItemBusiness.objects.first()
+    business_data = Business.objects.first()
 
     # Table style
     style = [
@@ -30,18 +32,20 @@ def generate_pdf(request):
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
         ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
     ]
-
+    # itemBusinessData.nombre, ,
     # First table
+
+    
     data_table2 = [
-        ["Imagen", "Inventario de Activos de Información", "Fecha de revisión", itemsBusiness.fecha_revision],
-        ["", "Fecha de elaboración", itemsBusiness.fecha_elaboracion],
+        [Image(business_data.imagen.path, width=100, height=50), business_data.nombre, "Revisión", itemsBusiness.fecha_revision],
+        ["", "Inventario de Activos de Información", "Elaborado", itemsBusiness.fecha_elaboracion],
         ["", "", "Versión", itemsBusiness.version],
         ["", "", "Código", itemsBusiness.codigo],
     ]
 
     style_table2 = style.copy()
     style_table2.extend([
-        ('SPAN', (1, 3), (1, 0)),  
+        ('SPAN', (1, 3), (1, 1)),  
         ('SPAN', (0, 3), (0, 0)),  
         ('SPAN', (0, 0), (0, 0)),
     ])
@@ -58,6 +62,8 @@ def generate_pdf(request):
     table2.drawOn(p, x_start_table2, y_start_table2)
 
     p.drawString(x_start_table2, y_start_table2 - 50, '' * int(total_width_table2 / 7))
+
+
 
     #Second Table
     data_table1 = [

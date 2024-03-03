@@ -5,19 +5,20 @@ from .models import Catalogue
 from .forms import CatalogueForm
 
 # Create your views here.
-class Catalogo(generic.TemplateView, LoginRequiredMixin):
+class CatalogueCV(generic.TemplateView, LoginRequiredMixin):
     template_name = 'catalogo.html'
 
-def agregar_departamento(request):
-    if request.method == 'POST':
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CatalogueForm()
+        context['catalogue'] = Catalogue.objects.all()
+        return context
+    
+    def post(self, request, *args, **kwargs):
         form = CatalogueForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lista_departamentos')
-    else:
-        form = CatalogueForm()
-    return render(request, 'catalogo.html', {'form': form})
-
-def lista_departamentos(request):
-    departamentos = Catalogue.objects.all()
-    return render(request, 'catalogo.html', {'departamentos': departamentos})
+            return redirect('catalogue')
+        else:
+            context = self.get_context_data(form=form)
+            return self.render_to_response(context)

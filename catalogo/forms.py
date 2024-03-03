@@ -4,4 +4,4 @@ from .models import Catalogue
 class CatalogueForm(forms.ModelForm):
     class Meta:
         model = Catalogue
-        fields = '__all__'
+        fields = ['name_active', 'areas']

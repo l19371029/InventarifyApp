@@ -126,11 +126,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-#Permisos para archivos estaticos
+#Static acces files
 STATIC_URL = '/static/'
 MEDIA_URL =  '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
@@ -157,4 +158,4 @@ EMAIL_HOST = 'smtp.gmail.com'  # serve
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'cmarquez@mbqinc.com' 
-EMAIL_HOST_PASSWORD = 'MBQ#23k1$201$10'  # tu contraseña de correo
+EMAIL_HOST_PASSWORD = 'MBQ#23k1$201$10'  
