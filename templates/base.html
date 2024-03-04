@@ -77,15 +77,19 @@
                         <i class=""></i>
                         <span>Usuario</span>
                     </a>
-                    <a class="nav-link" href="{% url 'catalogue' %}">
+                    <!--Next version because fury my wise-->
+                    {% comment %} <a class="nav-link" href="{% url 'catalogue' %}">
                         <i class=""></i>
                         <span>Catalogo</span>
-                    </a>
-                    <a class="nav-link" href="{% url 'businessData' %}">
-                        <i class=""></i>
-                        <span>Datos Empresa</span>
-                    </a>
+                    </a> {% endcomment %}
                 {% endif %}
+            </li>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item" id="nav-item-indicator">
+                <a class="nav-link" href="{% url 'businessData' %}">
+                    <i class=""></i>
+                    <span>Datos Empresa</span>
+                </a>
             </li>
             <!-- Nav Item - Charts -->
             <li class="nav-item" id="nav-item-indicator">

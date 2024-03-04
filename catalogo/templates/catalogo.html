@@ -15,7 +15,7 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="revenue">Vista Para Usuarios</label>
-                </div>
+                </div> 
                 <div class="form-group">
                     <label for="{{ form.name_active.id_for_label }}">Nombre del activo</label>
                     <input type="text" class="form-control" placeholder="Nombre del activo" id="nombre_activo" name="nombre_activo">
@@ -38,8 +38,8 @@
                 <tbody>
                     {% for catalogue in catalogues %}
                     <tr>
-                        <td class="editable" contenteditable="true"> {{ catalogue.name_active }} </td>
-                        <td class="editable" contenteditable="true"> {{ catalogue.areas }} </td>
+                        <td class="editable" contenteditable="true"> {{ catalogues.name_active }} </td>
+                        <td class="editable" contenteditable="true"> {{ catalogues.areas }} </td>
                         <td>
                             <a class="btn btn-danger" href="{" role="button">Eliminar</a>
                             <a class="btn btn-secondary" href="">Editar</a>
